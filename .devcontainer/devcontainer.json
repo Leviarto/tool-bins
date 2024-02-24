@@ -1,0 +1,28 @@
+{
+  "name": "tool-bins-dev",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "pflannery.vscode-versionlens",
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "me-dutour-mathieu.vscode-github-actions",
+        // productivity / preview tools
+        "nmsmith89.incrementor",
+        "jock.svg",
+        "antfu.iconify",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-preview-github-styles",
+        "Gruntfuggly.todo-tree"
+      ]
+    }
+  },
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    "CONTAINER_WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
+  }
+}
