@@ -1,16 +1,23 @@
 {
-  "name": "tool-bins-dev",
+  "name": "media-tools-bin-maker",
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
-  "features": {},
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "bash ./.devcontainer/post-create.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "streetsidesoftware.code-spell-checker",
         "eamodio.gitlens",
+        "vivaxy.vscode-conventional-commits",
         "pflannery.vscode-versionlens",
         "EditorConfig.EditorConfig",
         "esbenp.prettier-vscode",
         "me-dutour-mathieu.vscode-github-actions",
+        // bash lang-server and intellisense
+        "mads-hartmann.bash-ide-vscode",
+        "tetradresearch.vscode-h2o",
         // productivity / preview tools
         "nmsmith89.incrementor",
         "jock.svg",
