@@ -1,0 +1,11 @@
+{
+  "cSpell.enableFiletypes": [
+    "*"
+  ],
+  "git.inputValidation": false,
+  "conventionalCommits.gitmoji": false,
+  "conventionalCommits.promptBody": false,
+  "conventionalCommits.promptFooter": false,
+  "conventionalCommits.autoCommit": false,
+  "conventionalCommits.promptScopes": false,
+}
