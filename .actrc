@@ -1,0 +1,2 @@
+-P ubuntu-22.04=act-runner-custom-ubuntu-22-04
+--pull=false
