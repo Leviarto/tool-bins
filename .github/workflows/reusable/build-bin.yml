@@ -1,0 +1,51 @@
+defaults:
+  run:
+    shell: bash
+
+on:
+  workflow_call:
+    inputs:
+      toolName:
+        type: string
+        required: true
+      osName:
+        type: string
+        required: true
+
+jobs:
+  buildBin:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Check if new version exists
+        id: condition
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: ./scripts/is-build-required-check.sh '${{inputs.toolName}}' '${{inputs.osName}}' 'tar.gz'
+
+      - name: Copy entrypoint.sh to build context
+        run: |
+          cd ./.github/actions/build/${{inputs.toolName}}
+          for d in */; do cp entrypoint.sh "$d"; done
+
+      - if: ${{ 'true' == steps.condition.outputs.IS_BUILD_REQUIRED && 'HandBrakeCLI' == inputs.toolName && 'alpine-3.19' == inputs.osName }}
+        uses: ./.github/actions/build/HandBrakeCLI/alpine-3.19
+
+      - if: ${{ 'true' == steps.condition.outputs.IS_BUILD_REQUIRED && 'HandBrakeCLI' == inputs.toolName && 'ubuntu-22.04' == inputs.osName }}
+        uses: ./.github/actions/build/HandBrakeCLI/ubuntu-22.04
+
+      - name: Upload assets
+        if: ${{ 'true' == steps.condition.outputs.IS_BUILD_REQUIRED }}
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: ./scripts/upload-asset.sh '${{inputs.toolName}}' '${{inputs.osName}}' 'tar.gz'
+
+      - name: Delete old assets
+        if: ${{ 'true' == steps.condition.outputs.IS_BUILD_REQUIRED }}
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: ./scripts/delete-old-assets.sh '${{inputs.toolName}}' '${{inputs.osName}}' 'tar.gz'

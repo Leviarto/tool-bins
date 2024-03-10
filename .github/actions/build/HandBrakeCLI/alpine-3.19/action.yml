@@ -1,0 +1,5 @@
+name: Build HandBrakeCLI on Alpine 3.19
+description: Build binary for HandBrakeCLI with alpine:3.19 based container
+runs:
+  using: docker
+  image: Dockerfile

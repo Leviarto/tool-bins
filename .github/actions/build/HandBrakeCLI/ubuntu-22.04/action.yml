@@ -1,0 +1,5 @@
+name: Build HandBrakeCLI on Ubuntu 22.04
+description: Build binary for HandBrakeCLI with ubuntu:22.04 based container
+runs:
+  using: docker
+  image: Dockerfile

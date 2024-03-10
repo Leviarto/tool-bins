@@ -1,0 +1,30 @@
+name: Build HandBrakeCLI Binaries
+
+defaults:
+  run:
+    shell: bash
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - tools/config.json
+      - tools/HandBrakeCLI/manifest.json
+
+jobs:
+  build_HandBrakeCLI_alpine:
+    name: Build HandBrakeCLI on Alpine
+    uses: ./.github/workflows/reusable/build-bin.yml
+    with:
+      toolName: HandBrakeCLI
+      osName: alpine-3.19
+    secrets: inherit
+
+  build_HandBrakeCLI_ubuntu:
+    name: Build HandBrakeCLI on Ubuntu
+    uses: ./.github/workflows/reusable/build-bin.yml
+    with:
+      toolName: HandBrakeCLI
+      osName: ubuntu-22.04
+    secrets: inherit
