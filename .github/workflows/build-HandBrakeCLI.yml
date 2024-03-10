@@ -15,7 +15,7 @@ on:
 jobs:
   build_HandBrakeCLI_alpine:
     name: Build HandBrakeCLI on Alpine
-    uses: ./.github/workflows/reusable/build-bin.yml
+    uses: ./.github/workflows/build-bin.yml
     with:
       toolName: HandBrakeCLI
       osName: alpine-3.19
@@ -23,7 +23,7 @@ jobs:
 
   build_HandBrakeCLI_ubuntu:
     name: Build HandBrakeCLI on Ubuntu
-    uses: ./.github/workflows/reusable/build-bin.yml
+    uses: ./.github/workflows/build-bin.yml
     with:
       toolName: HandBrakeCLI
       osName: ubuntu-22.04
