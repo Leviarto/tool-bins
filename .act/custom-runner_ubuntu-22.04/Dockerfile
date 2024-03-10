@@ -9,5 +9,5 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | d
   && apt update \
   && apt install -y gh
 
-# install other utils
+# install other utils (gettext for envsubst)
 RUN sudo apt install -y gettext
