@@ -35,9 +35,23 @@ printH2() {
 printInfo() {
   printf "${ANSI_ESCAPE_TPL}\n" "${ANSI_COLOR_WHITE}" "${1}"
 }
+
 printError() {
   printf "\n${ANSI_ESCAPE_TPL}\n" "${ANSI_STYLE_BOLD};${ANSI_COLOR_RED}" "Error: ${1}"
 }
+printWarning() {
+  printf "\n${ANSI_ESCAPE_TPL}\n" "${ANSI_STYLE_BOLD};${ANSI_COLOR_YELLOW}" "${1}"
+}
 printSuccess() {
   printf "\n${ANSI_ESCAPE_TPL}\n" "${ANSI_STYLE_BOLD};${ANSI_COLOR_GREEN}" "${1}"
+}
+
+printMinorError() {
+  printf "${ANSI_ESCAPE_TPL}\n" "${ANSI_COLOR_RED}" "${1}"
+}
+printMinorWarning() {
+  printf "${ANSI_ESCAPE_TPL}\n" "${ANSI_COLOR_YELLOW}" "${1}"
+}
+printMinorSuccess() {
+  printf "${ANSI_ESCAPE_TPL}\n" "${ANSI_COLOR_GREEN}" "${1}"
 }
