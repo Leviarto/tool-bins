@@ -1,3 +1,5 @@
+name: Build Tool Binary
+
 defaults:
   run:
     shell: bash
