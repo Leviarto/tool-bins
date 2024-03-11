@@ -9,6 +9,9 @@ on:
   schedule:
     - cron: "0 14 * * *"
 
+permissions:
+  contents: write
+
 jobs:
   updateToolManifests:
     runs-on: ubuntu-22.04
