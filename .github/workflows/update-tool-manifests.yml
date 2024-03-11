@@ -1,0 +1,23 @@
+name: Update Tool Manifests
+
+defaults:
+  run:
+    shell: bash
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 14 * * *"
+
+jobs:
+  updateToolManifests:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Update manifest files
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: ./scripts/update-tool-manifest.sh

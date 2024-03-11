@@ -6,19 +6,32 @@
 ###############################################################################
 
 #
-# Fetch value by field name from tool manifest for the given tool name.
+# Read config property from tools general configuration.
+#
+# Arguments:
+#   • propName - The json property key.
+#
+# Output:
+#   The raw property value.
+#
+toolsConfig() {
+  printf $(cat tools/config.json | jq --raw-output ".${propName}")
+}
+
+#
+# Fetch value by property name from tool manifest for the given tool name.
 #
 # @private
 #
 # Arguments:
-#   • tooName - Tool name used to fetch the manifest.
-#   • fieldName - Key name of json manifest to fetch the value from.
+#   • tooName - Tool name used to fetch the manifest.json.
+#   • propName - The json property key.
 #
 # Output:
-#   The raw field value.
+#   The raw property value.
 #
-_toolManifest() {
-  printf $(cat tools/${toolName}/manifest.json | jq --raw-output ".${fieldName}")
+_toolManifestProp() {
+  printf $(cat tools/${toolName}/manifest.json | jq --raw-output ".${propName}")
 }
 
 #
@@ -31,7 +44,7 @@ _toolManifest() {
 #   The repo url.
 #
 toolRepoUrl() {
-  printf $(toolName=${toolName} fieldName=repoUrl _toolManifest)
+  printf $(toolName=${toolName} propName=repoUrl _toolManifestProp)
 }
 
 #
@@ -44,7 +57,7 @@ toolRepoUrl() {
 #   The tag name.
 #
 toolTagName() {
-  printf $(toolName=${toolName} fieldName=tagName _toolManifest)
+  printf $(toolName=${toolName} propName=tagName _toolManifestProp)
 }
 
 #
@@ -57,7 +70,7 @@ toolTagName() {
 #   The integer number for builds to keep.
 #
 toolKeepBuilds() {
-  printf $(toolName=${toolName} fieldName=keepBuilds _toolManifest)
+  printf $(toolName=${toolName} propName=keepBuilds _toolManifestProp)
 }
 
 #

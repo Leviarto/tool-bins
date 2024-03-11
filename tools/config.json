@@ -1,4 +1,5 @@
 {
   "assetFilenameTemplate": "${tool}-${tag}_${os}_x64.${ext}",
-  "assetFilenameTestRegEx": "(${tool})-([0-9]{1,5}\\.[0-9]{1,5}\\.[0-9]{1,5})_(${os})_x64\\.(${ext})"
+  "assetFilenameTestRegEx": "(${tool})-(v?[0-9]{1,5}\\.[0-9]{1,5}\\.[0-9]{1,5})_(${os})_x64\\.(${ext})",
+  "tagNameRegEx": "v?[0-9]{1,5}\\.[0-9]{1,5}\\.[0-9]{1,5}"
 }
