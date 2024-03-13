@@ -26,7 +26,7 @@ jobs:
       - name: Check if new version exists
         id: condition
         env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{secrets.PAT_MEDIA_TOOLS_BIN_MAKER_RELEASE_ASSETS}}
         run: ./scripts/is-build-required-check.sh '${{inputs.toolName}}' '${{inputs.osName}}' 'tar.gz'
 
       - name: Copy entrypoint.sh to build context
@@ -43,11 +43,11 @@ jobs:
       - name: Upload assets
         if: ${{ 'true' == steps.condition.outputs.IS_BUILD_REQUIRED }}
         env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{secrets.PAT_MEDIA_TOOLS_BIN_MAKER_RELEASE_ASSETS}}
         run: ./scripts/upload-asset.sh '${{inputs.toolName}}' '${{inputs.osName}}' 'tar.gz'
 
       - name: Delete old assets
         if: ${{ 'true' == steps.condition.outputs.IS_BUILD_REQUIRED }}
         env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{secrets.PAT_MEDIA_TOOLS_BIN_MAKER_RELEASE_ASSETS}}
         run: ./scripts/delete-old-assets.sh '${{inputs.toolName}}' '${{inputs.osName}}' 'tar.gz'

@@ -13,9 +13,6 @@ on:
       - tools/config.json
       - tools/HandBrakeCLI/manifest.json
 
-permissions:
-  contents: write
-
 jobs:
   build_HandBrakeCLI_alpine:
     name: Build HandBrakeCLI on Alpine
