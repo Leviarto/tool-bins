@@ -89,7 +89,7 @@ for toolFolder in tools/*/ ; do
     printMinorSuccess 'JSON updated'
     if [[ 'true' == $(filenamePath="${manifestFilenamePath}" isValidJsonFile) ]] ; then
       cat "${manifestFilenamePath}"
-      commitMessage='bot: update tag name' filenamePath="${manifestFilenamePath}" gitCommitAndPushFile
+      commitMessage='bot: update manifest tagName' filenamePath="${manifestFilenamePath}" gitCommitAndPushFile
       printMinorSuccess 'Commit and push: Success'
     else
       printMinorError "Manifest file \"${manifestFilenamePath}\" is not valid or missing."

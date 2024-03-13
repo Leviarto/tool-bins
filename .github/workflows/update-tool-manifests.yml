@@ -23,4 +23,4 @@ jobs:
       - name: Update manifest files
         env:
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        run: ./scripts/update-tool-manifest.sh
+        run: ./scripts/update-tool-manifests.sh
